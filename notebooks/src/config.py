@@ -1,20 +1,18 @@
 from pathlib import Path
 
+# path to the project root
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-PASTA_PROJETO = Path(__file__).resolve().parents[2]
+# path to the data folder
+DATA_PATH = PROJECT_ROOT / "data"
 
-PASTA_DADOS = PASTA_PROJETO / "dados"
+# put the paths to your project data files below
+ORIGINAL_DATA = DATA_PATH / "creditcard.zip"
+PROCESSED_DATA = DATA_PATH / "creditcard.parquet"
 
-# coloque abaixo o caminho para os arquivos de dados de seu projeto
-DADOS_ORIGINAIS = PASTA_DADOS / "NTZ_02_CTE_LIQUIDO.csv"
-DADOS_LIMPOS = PASTA_DADOS / "NTZ_02_CTE_LIQUIDO_clean.parquet"
-DADOS_GEO_ORIGINAIS = PASTA_DADOS / "california_counties.geojson"
-DADOS_GEO_MEDIAN = PASTA_DADOS / "gdf_counties.parquet"
+# put the paths to your project model files below
+MODELS_PATH = PROJECT_ROOT / "models"
 
-# coloque abaixo o caminho para os arquivos de modelos de seu projeto
-PASTA_MODELOS = PASTA_PROJETO / "modelos"
-MODELO_FINAL = PASTA_MODELOS / "ridge_polyfeat_target_quantile.joblib"
-
-# coloque abaixo outros caminhos que você julgar necessário
-PASTA_RELATORIOS = PASTA_PROJETO / "relatorios"
-PASTA_IMAGENS = PASTA_RELATORIOS / "imagens"
+# put other paths you deem necessary below
+REPORTS_PATH = PROJECT_ROOT / "reports"
+IMAGES_PATH = REPORTS_PATH / "images"

@@ -2,7 +2,8 @@ import pandas as pd
 
 from sklearn.model_selection import cross_validate, GridSearchCV
 
-from sklearn.pipeline import Pipeline
+from imblearn.pipeline import Pipeline
+from imblearn.under_sampling import RandomUnderSampler
 
 
 RANDOM_STATE = 42
@@ -10,9 +11,20 @@ RANDOM_STATE = 42
 
 def build_classification_model_pipeline(classifier, preprocessor=None):
     if preprocessor is not None:
-        pipeline = Pipeline([("preprocessor", preprocessor), ("clf", classifier)])
+        pipeline = Pipeline(
+            [
+                ("preprocessor", preprocessor),
+                ("sampler", RandomUnderSampler(random_state=RANDOM_STATE)),
+                ("clf", classifier)
+            ]
+        )
     else:
-        pipeline = Pipeline([("clf", classifier)])
+        pipeline = Pipeline(
+            [
+                ("sampler", RandomUnderSampler(random_state=RANDOM_STATE)),
+                ("clf", classifier)
+            ]
+        )
 
     model = pipeline
 
